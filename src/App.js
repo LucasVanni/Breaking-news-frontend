@@ -13,10 +13,9 @@ import {
     Header,
 } from 'rsuite';
 import Lottie from 'lottie-react-web';
-import PreloadNews from './components/PreloadNews';
 import Item from './components/Item';
 import api from './service/api';
-import NewsJson from './assets/sound.json';
+import JSON from './assets/Logo.json';
 
 function App() {
     const [copyrightMessage, setCopyrightMessage] = useState('');
@@ -28,6 +27,7 @@ function App() {
     useEffect(() => {
         api.get(`news?qtdNews=12&page=${actualPage}`).then((response) => {
             const { resultMap } = response.data;
+
             setCopyrightMessage(response.data.copyright);
             // setNews(response.data.results);
             setSearchNews(resultMap);
@@ -38,93 +38,87 @@ function App() {
     return (
         <div className="App">
             <Container>
-                {searchNews.length === 0 ? (
-                    <div style={{ padding: 40 }}>
-                        <PreloadNews />
-                        <PreloadNews />
-                        <PreloadNews />
-                        <PreloadNews />
-                    </div>
-                ) : (
-                    <>
-                        <Header>
-                            <Lottie
-                                options={{
-                                    animationData: NewsJson,
-                                    loop: false,
-                                    autoplay: true,
-                                }}
-                                height={300}
-                            />
-                        </Header>
-                        <Content>
-                            <div
+                <>
+                    <Header>
+                        <Lottie
+                            options={{
+                                animationData: JSON,
+                                loop: false,
+                                autoplay: true,
+                            }}
+                            height={300}
+                        />
+                    </Header>
+                    <Content>
+                        <div
+                            style={{
+                                display: 'Flex',
+                                flex: 1,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <InputGroup
                                 style={{
-                                    display: 'Flex',
-                                    flex: 1,
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
+                                    marginLeft: 200,
+                                    marginRight: 200,
                                 }}
                             >
-                                <InputGroup
-                                    style={{
-                                        marginLeft: 200,
-                                        marginRight: 200,
-                                    }}
-                                >
-                                    <AutoComplete
-                                        placeholder="Seach here"
-                                        data={data}
-                                        onSelect={() => alert('EU')}
-                                    />
-                                    <InputGroup.Button
-                                        onClick={() => alert('Você')}
-                                    >
-                                        <Icon icon="search" />
-                                    </InputGroup.Button>
-                                </InputGroup>
-                            </div>
-                            <FlexboxGrid
-                                style={{ padding: 40 }}
-                                justify="space-around"
-                            >
-                                <Item searchNews={searchNews} />
-                            </FlexboxGrid>
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                }}
-                            >
-                                <Pagination
-                                    pages={10}
-                                    activePage={actualPage}
-                                    prev
-                                    last
-                                    next
-                                    first
-                                    size="xs"
-                                    onSelect={setActualPage}
+                                <AutoComplete
+                                    placeholder="Seach here"
+                                    data={data}
+                                    onSelect={() => alert('EU')}
                                 />
-                            </div>
-                        </Content>
-                        <Footer>
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    height: 80,
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
+                                <InputGroup.Button
+                                    onClick={() => alert('Você')}
+                                >
+                                    <Icon icon="search" />
+                                </InputGroup.Button>
+                            </InputGroup>
+                        </div>
+                        <FlexboxGrid
+                            style={{ padding: 40 }}
+                            justify="space-around"
+                        >
+                            <Item searchNews={searchNews} />
+                        </FlexboxGrid>
+                        <div
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <Pagination
+                                pages={10}
+                                activePage={actualPage}
+                                prev
+                                last
+                                next
+                                first
+                                size="xs"
+                                onSelect={(next) => {
+                                    setSearchNews([]);
+                                    setActualPage(next);
                                 }}
-                            >
-                                <p style={{ textAlign: 'center' }}>
-                                    {copyrightMessage}
-                                </p>
-                            </div>
-                        </Footer>
-                    </>
-                )}
+                            />
+                        </div>
+                    </Content>
+                    <Footer>
+                        <div
+                            style={{
+                                display: 'flex',
+                                height: 80,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <p style={{ textAlign: 'center' }}>
+                                {copyrightMessage}
+                            </p>
+                        </div>
+                    </Footer>
+                </>
             </Container>
         </div>
     );

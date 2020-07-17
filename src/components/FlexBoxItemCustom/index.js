@@ -38,6 +38,10 @@ export default ({ item, index, setThumbnail, updatedDate }) => {
                     onMouseOut={() => setMouseOver(true)}
                 >
                     <img
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                        }}
                         src={setThumbnail(item.multimedia)}
                         alt={item.abstract}
                     />

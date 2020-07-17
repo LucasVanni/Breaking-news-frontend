@@ -1,6 +1,7 @@
 import React from 'react';
 
 import FlexBoxItemCustom from '../FlexBoxItemCustom';
+import PreloadNews from '../PreloadNews';
 
 const imageNYT = require('../../assets/LogoNTY.jpg');
 
@@ -31,6 +32,26 @@ export default ({ searchNews }) => {
         return `Last updated: ${mes}/${dia}/${ano} ${hora}`;
     };
 
+    if (searchNews.length === 0) {
+        return (
+            <>
+                <>
+                    <PreloadNews />
+                    <PreloadNews />
+                    <PreloadNews />
+                    <PreloadNews />
+                    <PreloadNews />
+                    <PreloadNews />
+                    <PreloadNews />
+                    <PreloadNews />
+                    <PreloadNews />
+                    <PreloadNews />
+                    <PreloadNews />
+                    <PreloadNews />
+                </>
+            </>
+        );
+    }
     return searchNews.map((item, index) => (
         <FlexBoxItemCustom
             updatedDate={updatedDate}
