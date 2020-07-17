@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import 'rsuite/dist/styles/rsuite-dark.css';
 import {
   Container,
@@ -25,7 +26,6 @@ function App() {
       setCopyrightMessage(response.data.copyright);
       // setNews(response.data.results);
       setSearchNews(response.data.results);
-      console.log(searchNews);
     });
   }, [actualPage]);
 
@@ -82,7 +82,16 @@ function App() {
               </div>
             </Content>
             <Footer>
-              <p style={{ textAlign: 'center' }}>{copyrightMessage}</p>
+              <div
+                style={{
+                  display: 'flex',
+                  height: 80,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <p style={{ textAlign: 'center' }}>{copyrightMessage}</p>
+              </div>
             </Footer>
           </>
         )}

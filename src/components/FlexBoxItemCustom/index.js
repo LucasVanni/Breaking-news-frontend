@@ -7,21 +7,27 @@ export default ({ item, index, setThumbnail, updatedDate }) => {
 
   return (
     <FlexboxGrid.Item
-      style={{ marginBottom: 10 }}
+      style={{
+        display: 'inline-block',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        marginBottom: 20,
+      }}
       componentClass={Col}
-      colspan={24}
-      md={6}
+      lg={70}
       key={index}
     >
       <a href={item.url}>
         <Panel
+          className="Panel"
           shaded
           bodyFill
           bordered
           style={{
             display: 'inline-block',
             width: 400,
-            height: 490,
+            height: 520,
             cursor: 'pointer',
             opacity: mouseOver ? 0.8 : 1,
             boxShadow: mouseOver
@@ -31,13 +37,15 @@ export default ({ item, index, setThumbnail, updatedDate }) => {
           onMouseOver={() => setMouseOver(false)}
           onMouseOut={() => setMouseOver(true)}
         >
-          <img
-            src={setThumbnail(item.multimedia)}
-            width="400"
-            height="280"
-            alt={item.abstract}
-          />
-          <Panel header={item.title}>
+          <img src={setThumbnail(item.multimedia)} alt={item.abstract} />
+          <Panel
+            header={item.title}
+            style={{
+              display: 'Flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+            }}
+          >
             <p>
               {item.abstract.length > 120
                 ? `${item.abstract.substr(0, 120)}... Click here and see more`
@@ -45,21 +53,13 @@ export default ({ item, index, setThumbnail, updatedDate }) => {
             </p>
             <p
               style={{
-                position: 'absolute',
-                display: 'fixed',
-                bottom: 20,
+                display: 'Flex',
+                marginTop: 20,
+                flexDirection: 'column',
+                alignItems: 'center',
               }}
             >
               <small>{updatedDate(item.updated_date)}</small>
-            </p>
-
-            <p
-              style={{
-                position: 'absolute',
-                display: 'fixed',
-                bottom: 40,
-              }}
-            >
               <small>{item.byline}</small>
             </p>
           </Panel>
