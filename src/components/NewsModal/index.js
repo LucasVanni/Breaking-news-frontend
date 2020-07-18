@@ -10,24 +10,46 @@ export default ({ modalInfos, isModalVisible, setIsModalVisible }) => {
     }
     return (
         <Modal
+            full
             style={{
+                minWidth: 200,
                 display: 'flex',
-                alignItems: 'center',
-                minWidth: 80,
                 justifyContent: 'center',
+                alignItems: 'center',
             }}
             show={isModalVisible}
             onHide={() => setIsModalVisible(false)}
         >
             <Modal.Header>
-                <Modal.Title>{modalInfos.title}</Modal.Title>
+                <Modal.Title>
+                    <div
+                        style={{
+                            width: 200,
+                            flexWrap: 'wrap',
+                            wordBreak: 'break-word',
+                            textAlign: 'justify',
+                        }}
+                    >
+                        {modalInfos.title}
+                    </div>
+                </Modal.Title>
             </Modal.Header>
             <Modal.Body
-                style={{ display: 'flex', flex: 1, justifyContent: 'center' }}
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: 200,
+                }}
             >
-                <img style={{ width: 200 }} src={url} alt={modalInfos.title} />
+                <img
+                    style={{ width: 200, marginBottom: 10 }}
+                    src={url}
+                    alt={modalInfos.title}
+                />
 
-                <p style={{ marginLeft: 20 }}>{modalInfos.abstract}</p>
+                <p>{modalInfos.abstract}</p>
             </Modal.Body>
             <Modal.Footer>
                 <Button href={modalInfos.url} appearance="primary">
