@@ -8,9 +8,11 @@ export default () => {
         <div
             style={{
                 display: 'compact',
-                margin: 50,
+                margin: 30,
                 padding: 50,
-                border: '1px solid #ccc',
+                paddingLeft: 100,
+                border: `1px solid rgba(128, 128, 128, 0.7)`,
+                borderRadius: 20,
             }}
         >
             <Paragraph
@@ -19,7 +21,7 @@ export default () => {
                 graph="image"
                 active
             />
-            <Paragraph rows={6} rowHeight={10} rowMargin={30} active />
+            <Paragraph rows={6} rowHeight={10} rowMargin={20} active />
         </div>
     );
 };

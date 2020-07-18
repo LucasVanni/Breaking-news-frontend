@@ -2,7 +2,14 @@
 import React, { useState } from 'react';
 import { FlexboxGrid, Panel, Col } from 'rsuite';
 
-export default ({ item, index, setThumbnail, updatedDate }) => {
+export default ({
+    item,
+    index,
+    setThumbnail,
+    updatedDate,
+    setModalInfos,
+    setIsModalVisible,
+}) => {
     const [mouseOver, setMouseOver] = useState(true);
 
     return (
@@ -18,7 +25,12 @@ export default ({ item, index, setThumbnail, updatedDate }) => {
             lg={70}
             key={index}
         >
-            <a href={item.url}>
+            <a
+                onClick={() => {
+                    setModalInfos(item);
+                    setIsModalVisible(true);
+                }}
+            >
                 <Panel
                     className="Panel"
                     shaded
@@ -64,7 +76,7 @@ export default ({ item, index, setThumbnail, updatedDate }) => {
                         <p
                             style={{
                                 display: 'Flex',
-                                marginTop: 20,
+                                marginTop: 10,
                                 flexDirection: 'column',
                                 alignItems: 'center',
                             }}

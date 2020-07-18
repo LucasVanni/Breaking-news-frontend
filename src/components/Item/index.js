@@ -3,25 +3,9 @@ import React from 'react';
 import FlexBoxItemCustom from '../FlexBoxItemCustom';
 import PreloadNews from '../PreloadNews';
 
-const imageNYT = require('../../assets/LogoNTY.jpg');
+import setThumbnail from '../../functions/setThumbnail';
 
-export default ({ searchNews }) => {
-    const setThumbnail = (multimedia) => {
-        let url = '';
-
-        if (multimedia !== null) {
-            multimedia.forEach((element) => {
-                if (element.width === 440) {
-                    url = element.url;
-                }
-            });
-        } else {
-            url = imageNYT;
-        }
-
-        return url;
-    };
-
+export default ({ searchNews, setModalInfos, setIsModalVisible }) => {
     const updatedDate = (dateItem) => {
         const ano = dateItem.substr(0, 4);
         const mes = dateItem.substr(5, 2);
@@ -54,6 +38,8 @@ export default ({ searchNews }) => {
     }
     return searchNews.map((item, index) => (
         <FlexBoxItemCustom
+            setModalInfos={setModalInfos}
+            setIsModalVisible={setIsModalVisible}
             updatedDate={updatedDate}
             setThumbnail={setThumbnail}
             item={item}
