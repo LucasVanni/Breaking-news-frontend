@@ -23,7 +23,7 @@ Segue abaixo as técnologias utilizadas no frontend da aplicação:
 
 ℹ️ Como Utilizar
 
-A aplicação fronted está disponível no endereço no [endereço](https://upload-application-frontend.herokuapp.com/).
+A aplicação fronted está disponível no [endereço](https://upload-application-frontend.herokuapp.com/).
 
 Para clonar o repositório e executá-lo em localhost terá que ter instalado o [GIT](https://git-scm.com) em sua máquina, o [Node.js v12.18.2](https://nodejs.org/en/) ou maior + [Yarn v1.22.4](https://yarnpkg.com/)
 
