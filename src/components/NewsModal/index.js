@@ -12,7 +12,6 @@ const NewsModal = ({ modalInfos, isModalVisible, setIsModalVisible }) => {
         <Modal
             full
             style={{
-                minWidth: 200,
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -29,22 +28,22 @@ const NewsModal = ({ modalInfos, isModalVisible, setIsModalVisible }) => {
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    width: 200,
                 }}
             >
                 <div
                     style={{
-                        width: 200,
                         marginBottom: 10,
-                        flexWrap: 'wrap',
-                        fontWeight: 'bold',
-                        wordBreak: 'break-word',
+                        fontSize: 25,
                     }}
                 >
                     {modalInfos.title}
                 </div>
+
                 <img
-                    style={{ width: 200, marginBottom: 10 }}
+                    style={{
+                        width: 350,
+                        marginBottom: 10,
+                    }}
                     src={url}
                     alt={modalInfos.title}
                 />
