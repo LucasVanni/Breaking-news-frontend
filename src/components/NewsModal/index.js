@@ -10,7 +10,6 @@ const NewsModal = ({ modalInfos, isModalVisible, setIsModalVisible }) => {
     }
     return (
         <Modal
-            full
             style={{
                 display: 'flex',
                 justifyContent: 'center',
