@@ -1,9 +1,9 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Modal, Button } from 'rsuite';
+import PropTypes from 'prop-types';
 import setThumbnail from '../../functions/setThumbnail';
 
-export default ({ modalInfos, isModalVisible, setIsModalVisible }) => {
+const NewsModal = ({ modalInfos, isModalVisible, setIsModalVisible }) => {
     let url;
     if (modalInfos.multimedia !== undefined) {
         url = setThumbnail(modalInfos.multimedia);
@@ -21,18 +21,7 @@ export default ({ modalInfos, isModalVisible, setIsModalVisible }) => {
             onHide={() => setIsModalVisible(false)}
         >
             <Modal.Header>
-                <Modal.Title>
-                    <div
-                        style={{
-                            width: 200,
-                            flexWrap: 'wrap',
-                            wordBreak: 'break-word',
-                            textAlign: 'justify',
-                        }}
-                    >
-                        {modalInfos.title}
-                    </div>
-                </Modal.Title>
+                <Modal.Title>Preview News</Modal.Title>
             </Modal.Header>
             <Modal.Body
                 style={{
@@ -43,6 +32,17 @@ export default ({ modalInfos, isModalVisible, setIsModalVisible }) => {
                     width: 200,
                 }}
             >
+                <div
+                    style={{
+                        width: 200,
+                        marginBottom: 10,
+                        flexWrap: 'wrap',
+                        fontWeight: 'bold',
+                        wordBreak: 'break-word',
+                    }}
+                >
+                    {modalInfos.title}
+                </div>
                 <img
                     style={{ width: 200, marginBottom: 10 }}
                     src={url}
@@ -59,3 +59,11 @@ export default ({ modalInfos, isModalVisible, setIsModalVisible }) => {
         </Modal>
     );
 };
+
+NewsModal.propTypes = {
+    modalInfos: PropTypes.shape([]).isRequired,
+    isModalVisible: PropTypes.bool.isRequired,
+    setIsModalVisible: PropTypes.func.isRequired,
+};
+
+export default NewsModal;
